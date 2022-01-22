@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movies_app/modules/movies/widgets/movies_filters.dart';
 import 'package:movies_app/modules/movies/widgets/movies_header.dart';
 
 class MoviesPage extends StatelessWidget {
@@ -10,8 +11,9 @@ class MoviesPage extends StatelessWidget {
     return SizedBox(
         width: Get.width,
         child: ListView(
-          children: [
+          children: const [
             MoviesHeader(),
+            MoviesFilters(),
           ],
         ));
   }
