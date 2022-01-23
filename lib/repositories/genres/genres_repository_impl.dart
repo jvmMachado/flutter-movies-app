@@ -1,3 +1,4 @@
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:movies_app/models/genre_model.dart';
 
 import '../../application/rest_client/rest_client.dart';
@@ -13,7 +14,10 @@ class GenresRepositoryImpl implements GenresRepository {
   @override
   Future<List<GenreModel>> getGenres() async {
     final result = await _restClient.get<List<GenreModel>>('/genre/movie/list',
-        decoder: (data) {
+        query: {
+          'api_key': RemoteConfig.instance.getString('api_token'),
+          'language': 'pt-br'
+        }, decoder: (data) {
       final resultData = data['genres'];
       if (resultData != null) {
         return resultData
