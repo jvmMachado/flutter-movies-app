@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
 import 'package:movies_app/application/ui/movies_app_icons_icons.dart';
+import 'package:movies_app/models/movie_model.dart';
 
 class MovieCard extends StatelessWidget {
-  const MovieCard({Key? key}) : super(key: key);
+  final dateFormat = DateFormat('y');
+  final MovieModel movie;
+
+  MovieCard({
+    Key? key,
+    required this.movie,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +31,7 @@ class MovieCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                   clipBehavior: Clip.antiAlias,
                   child: Image.network(
-                    'https://upload.wikimedia.org/wikipedia/pt/thumb/6/63/Joker_%282019%29.jpg/250px-Joker_%282019%29.jpg',
+                    movie.posterPath,
                     width: 148,
                     height: 184,
                     fit: BoxFit.cover,
@@ -33,13 +42,14 @@ class MovieCard extends StatelessWidget {
                 height: 20,
               ),
               Text(
-                'Coringa',
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                movie.title,
+                style:
+                    const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
                 overflow: TextOverflow.ellipsis,
               ),
               Text(
-                '2019',
-                style: TextStyle(
+                dateFormat.format(DateTime.parse(movie.releaseDate)),
+                style: const TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.w300,
                     color: Colors.grey),
@@ -58,7 +68,8 @@ class MovieCard extends StatelessWidget {
                 height: 30,
                 child: IconButton(
                   iconSize: 13,
-                  icon: Icon(MoviesAppIcons.heart_empty, color: Colors.grey),
+                  icon: const Icon(MoviesAppIcons.heart_empty,
+                      color: Colors.grey),
                   onPressed: () {},
                 ),
               ),
