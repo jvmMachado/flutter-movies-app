@@ -3,18 +3,18 @@ import 'dart:convert';
 class CastModel {
   final String name;
   final String image;
-  final String charater;
+  final String character;
   CastModel({
     required this.name,
     required this.image,
-    required this.charater,
+    required this.character,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'name': name,
       'image': image,
-      'charater': charater,
+      'charater': character,
     };
   }
 
@@ -22,7 +22,7 @@ class CastModel {
     return CastModel(
       name: map['original_name'] ?? '',
       image: 'http://image.tmdb.org/t/p/w200${map['profile_path']}',
-      charater: map['charater'] ?? '',
+      character: map['character'] ?? '',
     );
   }
 
