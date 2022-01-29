@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:movies_app/application/ui/loader/loader_mixin.dart';
 import 'package:movies_app/application/ui/messages/messages_mixin.dart';
-import 'package:movies_app/models/movie_detail_model.dart';
+import 'package:movies_app/models/movie_details_model.dart';
 import 'package:movies_app/services/movies/movies_service.dart';
 
 class MovieDetailsController extends GetxController
@@ -10,7 +10,7 @@ class MovieDetailsController extends GetxController
 
   var loading = false.obs;
   var message = Rxn<MessageModel>();
-  var movieDetails = Rxn<MovieDetailModel>();
+  var movieDetails = Rxn<MovieDetailsModel>();
 
   MovieDetailsController({required MoviesService moviesService})
       : _moviesService = moviesService;

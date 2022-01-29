@@ -1,6 +1,6 @@
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:movies_app/application/rest_client/rest_client.dart';
-import 'package:movies_app/models/movie_detail_model.dart';
+import 'package:movies_app/models/movie_details_model.dart';
 import 'package:movies_app/models/movie_model.dart';
 
 import './movies_repository.dart';
@@ -74,8 +74,8 @@ class MoviesRepositoryImpl implements MoviesRepository {
   }
 
   @override
-  Future<MovieDetailModel?> getDetails(int id) async {
-    final result = await _restClient.get<MovieDetailModel?>(
+  Future<MovieDetailsModel?> getDetails(int id) async {
+    final result = await _restClient.get<MovieDetailsModel?>(
       '/movie/$id',
       query: {
         'api_key': RemoteConfig.instance.getString('api_token'),
@@ -84,7 +84,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
         'include_image_language': 'en,pt-br',
       },
       decoder: (data) {
-        return MovieDetailModel.fromMap(data);
+        return MovieDetailsModel.fromMap(data);
       },
     );
 
