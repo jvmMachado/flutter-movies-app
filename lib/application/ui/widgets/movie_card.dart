@@ -3,15 +3,18 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import 'package:movies_app/application/ui/movies_app_icons_icons.dart';
+import 'package:movies_app/application/ui/theme_extensions.dart';
 import 'package:movies_app/models/movie_model.dart';
 
 class MovieCard extends StatelessWidget {
   final dateFormat = DateFormat('y');
   final MovieModel movie;
+  final VoidCallback favoriteCallBack;
 
   MovieCard({
     Key? key,
     required this.movie,
+    required this.favoriteCallBack,
   }) : super(key: key);
 
   @override
@@ -36,7 +39,7 @@ class MovieCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                     clipBehavior: Clip.antiAlias,
                     child: Image.network(
-                      movie.posterPath,
+                      'http://image.tmdb.org/t/p/w200${movie.posterPath}',
                       width: 148,
                       height: 184,
                       fit: BoxFit.cover,
@@ -73,9 +76,12 @@ class MovieCard extends StatelessWidget {
                   height: 30,
                   child: IconButton(
                     iconSize: 13,
-                    icon: const Icon(MoviesAppIcons.heart_empty,
-                        color: Colors.grey),
-                    onPressed: () {},
+                    icon: Icon(
+                        movie.favorite
+                            ? MoviesAppIcons.heart
+                            : MoviesAppIcons.heart_empty,
+                        color: movie.favorite ? context.themeRed : Colors.grey),
+                    onPressed: favoriteCallBack,
                   ),
                 ),
               ),
