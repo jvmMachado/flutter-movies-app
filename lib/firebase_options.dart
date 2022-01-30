@@ -45,7 +45,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCMVHpRVaCF81h4Lj7O7Lwou3dseBBoFB8',
-    appId: '1:690431217904:android:ed19e720bb14eab8b07235',
+    appId: '1:690431217904:android:986199e9d73c79c2b07235',
     messagingSenderId: '690431217904',
     projectId: 'dart-week-movie-app',
     storageBucket: 'dart-week-movie-app.appspot.com',
